@@ -64,7 +64,7 @@ jobs:
         uses: actions/configure-pages@v5.0.0
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
   # This job checks that all the pages/ images you link to on your documentation site exist and do not return 404s etc.
   url-check:
