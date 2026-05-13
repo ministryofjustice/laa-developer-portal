@@ -11,7 +11,7 @@ export default class AlertsApiClient {
   }
 
   async getAlerts(): Promise<Alert[]> {
-    const urlFilter = 'filter=businessUnit="hmpps"'
+    const urlFilter = 'filter=businessUnit="laa"'
 
     return this.restClient.get({
       path: '/alerts',

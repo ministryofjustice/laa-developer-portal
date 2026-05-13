@@ -18,7 +18,7 @@
   <div class="govuk-grid-column-one-half">
     {% include 'partials/errorSummary.njk' %}
     <h1 class="govuk-heading-xl">Component Request Form</h1>
-    <p>Documentation for creating new services is located <a class="govuk-link--no-visited-state" href="https://tech-docs.hmpps.service.justice.gov.uk/creating-new-services/">here</a>. If this is the first time you're creating a service please make sure you read that first.
+    <p>Documentation for creating new services is located <a class="govuk-link--no-visited-state" href="https://tech-docs.laa.service.justice.gov.uk/creating-new-services/">here</a>. If this is the first time you're creating a service please make sure you read that first.
     <p>After submitting this form, the SRE team will run the bootstrap to create the github repo and service catalogue entries. </p>
     <form action="/component-requests/new" method="POST">
       <input type="hidden" name="_csrf" value="{{ csrfToken }}">
@@ -32,7 +32,7 @@
           classes: "govuk-fieldset__legend--s"
         },
         hint: {
-          html: "This must start with 'hmpps-' and contain only alphanumeric characters and hyphens (-). Ensure that new components meet the " + '<a class="govuk-link--no-visited-state" href="https://tech-docs.hmpps.service.justice.gov.uk/service-standard/service-naming/">guidance around service naming</a>.'
+          html: "This must start with 'laa-' and contain only alphanumeric characters and hyphens (-). Ensure that new components meet the " + '<a class="govuk-link--no-visited-state" href="https://tech-docs.laa.service.justice.gov.uk/service-standard/service-naming/">guidance around service naming</a>.'
         },
         errorMessage: validationErrors | findError('github_repo')
       }) }}
@@ -46,7 +46,7 @@
           classes: "govuk-fieldset__legend--s"
         },
         hint: {
-          html: "Add a description to provide details about the service. " + '<a class="govuk-link--no-visited-state" href="https://tech-docs.hmpps.service.justice.gov.uk/service-standard/repository-settings/#repository-description">Read more about repository descriptions.</a>'
+          html: "Add a description to provide details about the service. " + '<a class="govuk-link--no-visited-state" href="https://tech-docs.laa.service.justice.gov.uk/service-standard/repository-settings/#repository-description">Read more about repository descriptions.</a>'
         },
         errorMessage: validationErrors | findError('repo_description')
       }) }}
@@ -64,12 +64,12 @@
         },
         items: [
           {
-            value: "hmpps-template-kotlin",
-            text: "hmpps-template-kotlin"
+            value: "laa-template-kotlin",
+            text: "laa-template-kotlin"
           },
           {
-            value: "hmpps-template-typescript",
-            text: "hmpps-template-typescript"
+            value: "laa-template-typescript",
+            text: "laa-template-typescript"
           },
           {
             value: "none",
@@ -99,7 +99,7 @@
           }
         ],
         errorMessage: validationErrors | findError('github_project_visibility'),
-        hint: { html : "Most projects should be public, unless there is a specific reason not to be." + '<a class="govuk-link--no-visited-state" href="https://tech-docs.hmpps.service.justice.gov.uk/service-standard/repository-settings/#visibility-public"> Read more about project visibility </a>' }
+        hint: { html : "Most projects should be public, unless there is a specific reason not to be." + '<a class="govuk-link--no-visited-state" href="https://tech-docs.laa.service.justice.gov.uk/service-standard/repository-settings/#visibility-public"> Read more about project visibility </a>' }
       }) }}
 
       {{ govukSelect({
@@ -135,7 +135,7 @@
           classes: "govuk-fieldset__legend--s"
         },
         hint: {
-          text: "Separated by comma eg: hmpps-developers,haha"
+          text: "Separated by comma eg: laa-developers,haha"
         }
       }) }}
       {{ govukInput({
@@ -149,7 +149,7 @@
           classes: "govuk-fieldset__legend--s"
         },
         hint: {
-          text: "Separated by comma eg: hmpps-developers,haha"
+          text: "Separated by comma eg: laa-developers,haha"
         }
       }) }}
       {{ govukInput({
@@ -163,13 +163,13 @@
           classes: "govuk-fieldset__legend--s"
         },
         hint: {
-          text: "Separated by comma eg: hmpps-developers,haha"
+          text: "Separated by comma eg: laa-developers,haha"
         }
       }) }}
       <h2>Slack notification channels</h2>
-      <p>There is some guidance around selecting slack channels <a class="govuk-link--no-visited-state" href="https://tech-docs.hmpps.service.justice.gov.uk/creating-new-services/prerequisites/#team-slack-channels">here</a>.</p>
+      <p>There is some guidance around selecting slack channels <a class="govuk-link--no-visited-state" href="https://tech-docs.laa.service.justice.gov.uk/creating-new-services/prerequisites/#team-slack-channels">here</a>.</p>
       <p>You'll need to ensure that notifications are not sent to the channel that receives production alerts.</p>
-      <p><b>Note:</b> If a Slack channel is private, please invite <b>@HMPPS SRE Slack Bot</b> to the channel</p>
+      <p><b>Note:</b> If a Slack channel is private, please invite <b>@LAA SRE Slack Bot</b> to the channel</p>
       {{ govukInput({
         id: "slack_channel_prod_release_notify",
         name: "slack_channel_prod_release_notify",

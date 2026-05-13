@@ -60,12 +60,12 @@
       </td>
     </tr>
     <tr>
-      <th>HMPPS template</th>
+      <th>LAA template</th>
       <td>
-        {% if namespace.hmppsTemplate | length %}
+        {% if namespace.laaTemplate | length %}
         <ul>
-          {% for hmppsTemplate in namespace.hmppsTemplate %}
-            <li><a href="#{{ hmppsTemplate.tf_label | replace(' ', '-') | lower }}">{{ hmppsTemplate.tf_label }}</a></li>
+          {% for laaTemplate in namespace.laaTemplate %}
+            <li><a href="#{{ laaTemplate.tf_label | replace(' ', '-') | lower }}">{{ laaTemplate.tf_label }}</a></li>
           {% endfor %}
         </ul>
         {% else %}
@@ -277,44 +277,44 @@
   {% endfor %}
 {% endif %}
 
-{% if namespace.hmppsTemplate | length %}
-  <h1>HMPPS Templates</h1>
-  {% for hmppsTemplate in namespace.hmppsTemplate %}
-    <h2>{{ hmppsTemplate.tf_label }}</h2>
-    <table class="componentData" id="{{ hmppsTemplate.tf_label | replace(' ', '-') | lower }}">
+{% if namespace.laaTemplate | length %}
+  <h1>LAA Templates</h1>
+  {% for laaTemplate in namespace.laaTemplate %}
+    <h2>{{ laaTemplate.tf_label }}</h2>
+    <table class="componentData" id="{{ laaTemplate.tf_label | replace(' ', '-') | lower }}">
       <tbody>
         <tr>
           <th>tf_label</th>
-          <td>{{ hmppsTemplate.tf_label }}</td>
+          <td>{{ laaTemplate.tf_label }}</td>
         </tr>
         <tr>
           <th>namespace</th>
-          <td>{{ hmppsTemplate.namespace }}</td>
+          <td>{{ laaTemplate.namespace }}</td>
         </tr>
         <tr>
           <th>Application</th>
-          <td>{{ hmppsTemplate.application }}</td>
+          <td>{{ laaTemplate.application }}</td>
         </tr>
         <tr>
           <th>Github Repo</th>
           <td>
-            <a href="https://github.com/ministryofjustice/{{ hmppsTemplate.github_repo }}">
-              {{ hmppsTemplate.github_repo }}
+            <a href="https://github.com/ministryofjustice/{{ laaTemplate.github_repo }}">
+              {{ laaTemplate.github_repo }}
             </a>
           </td>
         </tr>
         <tr>
           <th>source_template_repo</th>
-          <td>{{ hmppsTemplate.source_template_repo }}</td>
+          <td>{{ laaTemplate.source_template_repo }}</td>
         </tr>
         <tr>
           <th>prevent_self_review</th>
-          <td>{{ hmppsTemplate.prevent_self_review }}</td>
+          <td>{{ laaTemplate.prevent_self_review }}</td>
         </tr>
         <tr>
           <th>reviewer_teams</th>
           <td>
-            {% for team in hmppsTemplate.reviewer_teams %}
+            {% for team in laaTemplate.reviewer_teams %}
               {{ team }}<br>
             {% endfor %}
           </td>
@@ -322,14 +322,14 @@
         <tr>
           <th>selected_branch_patterns</th>
           <td>
-            {% for pattern in hmppsTemplate.selected_branch_patterns %}
+            {% for pattern in laaTemplate.selected_branch_patterns %}
               {{ pattern }}<br>
             {% endfor %}
           </td>
         </tr>
         <tr>
           <th>protected_branches_only</th>
-          <td>{{ hmppsTemplate.protected_branches_only }}</td>
+          <td>{{ laaTemplate.protected_branches_only }}</td>
         </tr>
       </tbody>
     </table>

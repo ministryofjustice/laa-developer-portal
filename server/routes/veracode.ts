@@ -7,7 +7,7 @@ export default function routes({ serviceCatalogueService }: Services): Router {
   const router = Router()
 
   router.get('/', async (req, res) => {
-    const scheduledJobRequest = await serviceCatalogueService.getScheduledJob({ name: 'hmpps-veracode-discovery' })
+    const scheduledJobRequest = await serviceCatalogueService.getScheduledJob({ name: 'laa-veracode-discovery' })
     return res.render('pages/veracode', {
       jobName: scheduledJobRequest.name,
       lastSuccessfulRun: utcTimestampToUtcDateTime(scheduledJobRequest.last_successful_run),

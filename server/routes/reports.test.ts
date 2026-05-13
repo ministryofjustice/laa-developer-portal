@@ -14,7 +14,7 @@ let app: Express
 const testReports = [
   {
     tf_label: 'example_rds',
-    namespace: 'hmpps-example',
+    namespace: 'laa-example',
     db_instance_class: 'db.small',
     db_engine_version: '1.0',
     rds_family: 'postgres1',

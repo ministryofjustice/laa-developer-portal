@@ -130,3 +130,4 @@ integration_tests/screenshots/
 # DS Store
 .DS_Store
 **/.DS_Store
+node_modules/

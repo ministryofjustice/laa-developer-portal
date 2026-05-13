@@ -2,7 +2,7 @@ import { dataAccess, StrapiApiClient, AlertsApiClient } from './index'
 
 jest.mock('../utils/azureAppInsights')
 jest.mock('../applicationInfo', () => () => ({
-  applicationName: 'hmpps-developer-portal',
+  applicationName: 'laa-developer-portal',
   buildNumber: '123',
   gitRef: 'abc123',
   gitShortHash: 'abc123',
@@ -31,7 +31,7 @@ describe('server/data/index', () => {
 
     it('should include application info in the result', () => {
       expect(dataAccessResult.applicationInfo).toEqual({
-        applicationName: 'hmpps-developer-portal',
+        applicationName: 'laa-developer-portal',
         buildNumber: '123',
         gitRef: 'abc123',
         gitShortHash: 'abc123',
@@ -168,7 +168,7 @@ describe('server/data/index', () => {
 
       expect(result1.applicationInfo).toBe(result2.applicationInfo)
       expect(result1.applicationInfo).toEqual({
-        applicationName: 'hmpps-developer-portal',
+        applicationName: 'laa-developer-portal',
         buildNumber: '123',
         gitRef: 'abc123',
         gitShortHash: 'abc123',

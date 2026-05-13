@@ -39,7 +39,7 @@ describe('/teams', () => {
     it('should render teams page', () => {
       serviceCatalogueService.getScheduledJob.mockResolvedValue({
         id: 1,
-        name: 'hmpps-github-discovery-incremental',
+        name: 'laa-github-discovery-incremental',
         last_successful_run: '2023-10-01T12:00:00Z',
       })
       return request(app)

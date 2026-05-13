@@ -26,7 +26,7 @@ jQuery(function () {
       createdCell: function (td, _cellData, rowData) {
         if (rowData.request_github_pr_number) {
           $(td).html(
-            `<a href="https://github.com/ministryofjustice/hmpps-project-bootstrap/pull/${rowData.request_github_pr_number}">${rowData.request_github_pr_number}</a>`,
+            `<a href="https://github.com/ministryofjustice/laa-project-bootstrap/pull/${rowData.request_github_pr_number}">${rowData.request_github_pr_number}</a>`,
           )
         } else {
           $(td).html('')

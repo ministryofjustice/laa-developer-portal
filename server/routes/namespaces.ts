@@ -6,7 +6,7 @@ export default function routes({ serviceCatalogueService }: Services): Router {
   const router = Router()
 
   router.get('/', async (req, res) => {
-    const scheduledJobRequest = await serviceCatalogueService.getScheduledJob({ name: 'hmpps-terraform-discovery' })
+    const scheduledJobRequest = await serviceCatalogueService.getScheduledJob({ name: 'laa-terraform-discovery' })
     return res.render('pages/namespaces', {
       jobName: scheduledJobRequest.name,
       lastSuccessfulRun: utcTimestampToUtcDateTime(scheduledJobRequest.last_successful_run),
@@ -26,7 +26,7 @@ export default function routes({ serviceCatalogueService }: Services): Router {
     const displayNamespace = {
       name: namespace.name,
       pingdomCheck: namespace.pingdom_check,
-      hmppsTemplate: namespace.hmpps_template,
+      laaTemplate: namespace.laa_template,
       rdsInstances: namespace.rds_instance,
       elasticacheCluster: namespace.elasticache_cluster,
     }
@@ -64,17 +64,17 @@ export default function routes({ serviceCatalogueService }: Services): Router {
     return res.render('pages/elasticacheCluster', { namespace: displayNamespace })
   })
 
-  router.get('/:namespaceSlug/hmpps-template/:tf_template', async (req, res) => {
+  router.get('/:namespaceSlug/laa-template/:tf_template', async (req, res) => {
     const namespaceSlug = getFormattedName(req, 'namespaceSlug')
     const namespace = await serviceCatalogueService.getNamespace({ namespaceSlug })
     const templateLabel = req.params.tf_template
-    const filteredTemplate = namespace.hmpps_template?.find(template => template.tf_label === templateLabel)
+    const filteredTemplate = namespace.laa_template?.find(template => template.tf_label === templateLabel)
 
     const displayNamespace = {
       name: namespace.name,
-      hmppsTemplate: filteredTemplate,
+      laaTemplate: filteredTemplate,
     }
-    return res.render('pages/hmppsTemplate', { namespace: displayNamespace })
+    return res.render('pages/laaTemplate', { namespace: displayNamespace })
   })
 
   router.get('/:namespaceSlug/pingdom-check/:encodedPingdomName', async (req, res) => {

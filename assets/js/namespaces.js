@@ -86,16 +86,16 @@ jQuery(function () {
       },
     },
     {
-      data: 'hmpps_template',
+      data: 'laa_template',
       createdCell: function (td, _cellData, rowData) {
-        const hmppsTemplates = rowData.hmpps_template
+        const laaTemplates = rowData.laa_template
           .map(
             template =>
-              `<a href="/namespaces/${rowData.name}/hmpps-template/${template.tf_label}">${template.tf_label}</a>`,
+              `<a href="/namespaces/${rowData.name}/laa-template/${template.tf_label}">${template.tf_label}</a>`,
           )
           .join('<br>')
 
-        const content = hmppsTemplates || 'N/A'
+        const content = laaTemplates || 'N/A'
         $(td).html(content)
       },
       render: function (data, type, rowData) {
@@ -104,7 +104,7 @@ jQuery(function () {
             ? data
                 .map(
                   template =>
-                    `<a href="/namespaces/${rowData.name}/hmpps-template/${template.tf_label}">${template.tf_label}</a>`,
+                    `<a href="/namespaces/${rowData.name}/laa-template/${template.tf_label}">${template.tf_label}</a>`,
                 )
                 .join('<br>')
             : 'N/A'

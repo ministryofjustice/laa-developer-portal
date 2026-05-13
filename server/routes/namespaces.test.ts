@@ -14,11 +14,11 @@ let app: Express
 type RdsEntry = Record<string, unknown>
 type ElasticacheCluster = Record<string, unknown>
 type PingdomCheck = Record<string, unknown>
-type HmppsTemplate = Record<string, unknown>
+type LaaTemplate = Record<string, unknown>
 
 const mockScheduledJob = {
   id: 12,
-  name: 'hmpps-mock-scheduled-job',
+  name: 'laa-mock-scheduled-job',
   description: 'Mock description.',
   schedule: '05 */6 * * *',
   last_scheduled_run: '2025-09-08T06:08:39.972Z',
@@ -42,7 +42,7 @@ const mockNamespaces = [
     rds_instance: [] as RdsEntry[],
     elasticache_cluster: [] as ElasticacheCluster[],
     pingdom_check: [] as PingdomCheck[],
-    hmpps_template: [] as HmppsTemplate[],
+    laa_template: [] as LaaTemplate[],
   },
   {
     id: 456,
@@ -54,21 +54,21 @@ const mockNamespaces = [
     rds_instance: [] as RdsEntry[],
     elasticache_cluster: [] as ElasticacheCluster[],
     pingdom_check: [] as PingdomCheck[],
-    hmpps_template: [] as HmppsTemplate[],
+    laa_template: [] as LaaTemplate[],
   },
 ]
 
 const mockNamespace = {
   id: 123,
-  name: 'hmpps-mock-namespace-api-dev',
+  name: 'laa-mock-namespace-api-dev',
   createdAt: '2024-08-22T16:47:39.016Z',
   updatedAt: '2025-09-08T06:06:30.097Z',
   publishedAt: '2024-08-22T16:47:39.007Z',
   documentId: 'mockId',
   rds_instance: [
     {
-      tf_label: 'hmpps_mock_namespace_api_rds',
-      namespace: 'hmpps-mock-namespace-api-dev',
+      tf_label: 'laa_mock_namespace_api_rds',
+      namespace: 'laa-mock-namespace-api-dev',
       db_instance_class: 'db.t3.small',
       db_engine_version: '16',
       rds_family: 'postgres16',
@@ -84,7 +84,7 @@ const mockNamespace = {
   ] as RdsEntry[],
   elasticache_cluster: [] as ElasticacheCluster[],
   pingdom_check: [] as PingdomCheck[],
-  hmpps_template: [] as HmppsTemplate[],
+  laa_template: [] as LaaTemplate[],
 }
 
 beforeEach(() => {
@@ -128,7 +128,7 @@ describe('/namespaces', () => {
           rds_instance: [] as RdsEntry[],
           elasticache_cluster: [] as ElasticacheCluster[],
           pingdom_check: [] as PingdomCheck[],
-          hmpps_template: [] as HmppsTemplate[],
+          laa_template: [] as LaaTemplate[],
         },
         {
           id: 456,
@@ -140,7 +140,7 @@ describe('/namespaces', () => {
           rds_instance: [] as RdsEntry[],
           elasticache_cluster: [] as ElasticacheCluster[],
           pingdom_check: [] as PingdomCheck[],
-          hmpps_template: [] as HmppsTemplate[],
+          laa_template: [] as LaaTemplate[],
         },
       ]
       return request(app)
@@ -157,7 +157,7 @@ describe('/namespaces', () => {
   describe('GET /:namespaceSlug', () => {
     it('should fetch namespace data and display RDS instances', async () => {
       return request(app)
-        .get('/namespaces/hmpps-mock-namespace-api-dev')
+        .get('/namespaces/laa-mock-namespace-api-dev')
         .expect('Content-Type', /html/)
         .expect(200)
         .expect(res => {
@@ -165,7 +165,7 @@ describe('/namespaces', () => {
           const table = $('.componentData')
           const namespaceRDSLink = table.find('td ul li a')
           expect(serviceCatalogueService.getNamespace).toHaveBeenCalled()
-          expect(namespaceRDSLink.text().trim()).toBe('hmpps_mock_namespace_api_rds')
+          expect(namespaceRDSLink.text().trim()).toBe('laa_mock_namespace_api_rds')
         })
     })
   })

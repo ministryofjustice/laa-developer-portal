@@ -272,7 +272,7 @@ describe('Strapi service', () => {
               'generic-prometheus-alerts': '1.3.2',
             },
             circleci: {
-              hmpps: '7',
+              laa: '7',
             },
             dockerfile: {
               base_image: 'node:18.18-bullseye-slim',
@@ -285,7 +285,7 @@ describe('Strapi service', () => {
         },
       ] as Component[]
       const dependencies = [
-        'circleci::hmpps',
+        'circleci::laa',
         'dockerfile::base_image',
         'helm::generic-prometheus-alerts',
         'helm::generic-service',

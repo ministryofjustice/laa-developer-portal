@@ -3,7 +3,7 @@ import RecommendedVersionsService, { recommendedVersions } from './recommendedVe
 import config from '../config'
 import logger from '../../logger'
 
-export type DependencyKey = 'genericPrometheusAlerts' | 'genericService' | 'hmppsGradleSpringBoot'
+export type DependencyKey = 'genericPrometheusAlerts' | 'genericService' | 'laaGradleSpringBoot'
 
 export type DependencyComparisonItem = {
   componentName: string
@@ -137,14 +137,14 @@ const getCurrentDependencyVersionsFromComponent = (component: Component) => {
     parseVersionToString(helmDeps?.['generic-service']) ||
     parseVersionToString(helmLegacyDeps?.['generic-service'])
 
-  const currentHmppsGradleSpringBoot =
-    parseVersionToString(gradle?.hmpps_gradle_spring_boot) ||
-    parseVersionToString((gradle as Record<string, unknown>)?.['hmpps-gradle-spring-boot'])
+  const currentLaaGradleSpringBoot =
+    parseVersionToString(gradle?.laa_gradle_spring_boot) ||
+    parseVersionToString((gradle as Record<string, unknown>)?.['laa-gradle-spring-boot'])
 
   return {
     genericPrometheusAlerts: currentGenericPrometheusAlerts,
     genericService: currentGenericService,
-    hmppsGradleSpringBoot: currentHmppsGradleSpringBoot,
+    laaGradleSpringBoot: currentLaaGradleSpringBoot,
   }
 }
 
@@ -156,7 +156,7 @@ export const compareComponentDependencies = (
   const recommendedVersionsMap = {
     genericPrometheusAlerts: recommended.helmDependencies.genericPrometheusAlerts,
     genericService: recommended.helmDependencies.genericService,
-    hmppsGradleSpringBoot: recommended.gradle.hmppsGradleSpringBoot,
+    laaGradleSpringBoot: recommended.gradle.laaGradleSpringBoot,
   }
 
   const comparisonItems: DependencyComparisonItem[] = []
@@ -177,9 +177,9 @@ export const compareComponentDependencies = (
   )
   addComparisonItem('genericService', currentVersions.genericService, recommendedVersionsMap.genericService)
   addComparisonItem(
-    'hmppsGradleSpringBoot',
-    currentVersions.hmppsGradleSpringBoot,
-    recommendedVersionsMap.hmppsGradleSpringBoot,
+    'laaGradleSpringBoot',
+    currentVersions.laaGradleSpringBoot,
+    recommendedVersionsMap.laaGradleSpringBoot,
   )
 
   return comparisonItems

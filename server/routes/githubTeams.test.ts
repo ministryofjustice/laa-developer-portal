@@ -13,7 +13,7 @@ let app: Express
 
 const mockScheduledJob = {
   id: 12,
-  name: 'hmpps-mock-scheduled-job',
+  name: 'laa-mock-scheduled-job',
   description: 'Mock description.',
   schedule: '05 */6 * * *',
   last_scheduled_run: '2025-09-08T06:08:39.972Z',
@@ -31,8 +31,8 @@ const mockGithubTeams = [
     id: 123,
     github_team_id: 12345678,
     team_name: 'mock-team-1',
-    parent_team_name: 'hmpps-mock-parent-team-1',
-    team_desc: 'HMPPS Mock Team 1',
+    parent_team_name: 'laa-mock-parent-team-1',
+    team_desc: 'LAA Mock Team 1',
     createdAt: '2025-07-01T15:03:50.752Z',
     updatedAt: '2025-07-01T15:03:50.752Z',
     publishedAt: '2025-07-01T15:03:50.751Z',
@@ -44,8 +44,8 @@ const mockGithubTeams = [
     id: 456,
     github_team_id: 45678901,
     team_name: 'mock-team-2',
-    parent_team_name: 'hmpps-mock-parent-team-2',
-    team_desc: 'HMPPS Mock Team 2',
+    parent_team_name: 'laa-mock-parent-team-2',
+    team_desc: 'LAA Mock Team 2',
     createdAt: '2025-07-01T15:03:31.089Z',
     updatedAt: '2025-07-01T15:03:31.089Z',
     publishedAt: '2025-07-01T15:03:31.088Z',
@@ -59,8 +59,8 @@ const mockGithubTeamRequest = {
   id: 123,
   github_team_id: 12345678,
   team_name: 'mock-team-1',
-  parent_team_name: 'hmpps-mock-parent-team-1',
-  team_desc: 'HMPPS Mock Team 1',
+  parent_team_name: 'laa-mock-parent-team-1',
+  team_desc: 'LAA Mock Team 1',
   createdAt: '2025-07-01T15:03:50.752Z',
   updatedAt: '2025-07-01T15:03:50.752Z',
   publishedAt: '2025-07-01T15:03:50.751Z',
@@ -104,8 +104,8 @@ describe('/githubTeams', () => {
           id: 123,
           github_team_id: 12345678,
           team_name: 'mock-team-1',
-          parent_team_name: 'hmpps-mock-parent-team-1',
-          team_desc: 'HMPPS Mock Team 1',
+          parent_team_name: 'laa-mock-parent-team-1',
+          team_desc: 'LAA Mock Team 1',
           createdAt: '2025-07-01T15:03:50.752Z',
           updatedAt: '2025-07-01T15:03:50.752Z',
           publishedAt: '2025-07-01T15:03:50.751Z',
@@ -117,8 +117,8 @@ describe('/githubTeams', () => {
           id: 456,
           github_team_id: 45678901,
           team_name: 'mock-team-2',
-          parent_team_name: 'hmpps-mock-parent-team-2',
-          team_desc: 'HMPPS Mock Team 2',
+          parent_team_name: 'laa-mock-parent-team-2',
+          team_desc: 'LAA Mock Team 2',
           createdAt: '2025-07-01T15:03:31.089Z',
           updatedAt: '2025-07-01T15:03:31.089Z',
           publishedAt: '2025-07-01T15:03:31.088Z',
@@ -140,7 +140,7 @@ describe('/githubTeams', () => {
 
   describe('GET /:github_team_name', () => {
     it('should fetch githubTeam data and display description, parent team, team members, the github team link and the sub teams as "none"', async () => {
-      const mockTeamName = 'hmpps-mock-team'
+      const mockTeamName = 'laa-mock-team'
 
       const mockSubTeams = [] as GithubTeam[]
 
@@ -154,9 +154,9 @@ describe('/githubTeams', () => {
           const $ = cheerio.load(res.text)
           const tableRows = $('.componentData tbody tr')
 
-          expect($(tableRows).eq(0).find('td').text().trim()).toBe('HMPPS Mock Team 1')
-          expect($(tableRows).eq(1).find('td a').text().trim()).toBe('hmpps-mock-parent-team-1')
-          expect($(tableRows).eq(1).find('td a').attr('href')).toBe('/github-teams/hmpps-mock-parent-team-1')
+          expect($(tableRows).eq(0).find('td').text().trim()).toBe('LAA Mock Team 1')
+          expect($(tableRows).eq(1).find('td a').text().trim()).toBe('laa-mock-parent-team-1')
+          expect($(tableRows).eq(1).find('td a').attr('href')).toBe('/github-teams/laa-mock-parent-team-1')
           expect($(tableRows).eq(2).find('td').text().trim()).toBe('None')
           expect($(tableRows).eq(3).find('td ul li').length).toBe(3)
           expect($(tableRows).eq(4).find('td a').text().trim()).toBe('mock-team-1')
@@ -166,15 +166,15 @@ describe('/githubTeams', () => {
         })
     })
     it('should fetch githubTeam data and display description, parent team, team members, the github team link and the sub team list', async () => {
-      const mockTeamName = 'hmpps-mock-team'
+      const mockTeamName = 'laa-mock-team'
 
       const mockSubTeams = [
         {
           id: 123,
           github_team_id: 12345678,
           team_name: 'mock-sub-team-1',
-          parent_team_name: 'hmpps-mock-team',
-          team_desc: 'HMPPS Mock Sub Team 1',
+          parent_team_name: 'laa-mock-team',
+          team_desc: 'LAA Mock Sub Team 1',
           createdAt: '2025-07-01T15:03:50.752Z',
           updatedAt: '2025-07-01T15:03:50.752Z',
           publishedAt: '2025-07-01T15:03:50.751Z',
@@ -186,8 +186,8 @@ describe('/githubTeams', () => {
           id: 456,
           github_team_id: 45678901,
           team_name: 'mock-sub-team-2',
-          parent_team_name: 'hmpps-mock-team',
-          team_desc: 'HMPPS Mock Sub Team 2',
+          parent_team_name: 'laa-mock-team',
+          team_desc: 'LAA Mock Sub Team 2',
           createdAt: '2025-07-01T15:03:31.089Z',
           updatedAt: '2025-07-01T15:03:31.089Z',
           publishedAt: '2025-07-01T15:03:31.088Z',
@@ -207,9 +207,9 @@ describe('/githubTeams', () => {
           const $ = cheerio.load(res.text)
           const tableRows = $('.componentData tbody tr')
 
-          expect($(tableRows).eq(0).find('td').text().trim()).toBe('HMPPS Mock Team 1')
-          expect($(tableRows).eq(1).find('td a').text().trim()).toBe('hmpps-mock-parent-team-1')
-          expect($(tableRows).eq(1).find('td a').attr('href')).toBe('/github-teams/hmpps-mock-parent-team-1')
+          expect($(tableRows).eq(0).find('td').text().trim()).toBe('LAA Mock Team 1')
+          expect($(tableRows).eq(1).find('td a').text().trim()).toBe('laa-mock-parent-team-1')
+          expect($(tableRows).eq(1).find('td a').attr('href')).toBe('/github-teams/laa-mock-parent-team-1')
           expect($(tableRows).eq(2).find('td ul li').length).toBe(2)
           expect($(tableRows).eq(3).find('td ul li').length).toBe(3)
           expect($(tableRows).eq(4).find('td a').text().trim()).toBe('mock-team-1')

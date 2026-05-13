@@ -1,19 +1,19 @@
 ---
-# Per environment values which override defaults in hmpps-developer-portal/values.yaml
+# Per environment values which override defaults in laa-developer-portal/values.yaml
 
 generic-service:
   replicaCount: 2
 
   ingress:
-    host: developer-portal-stage.hmpps.service.justice.gov.uk
-    tlsSecretName: hmpps-developer-portal-stage-cert
+    host: developer-portal-stage.laa.service.justice.gov.uk
+    tlsSecretName: laa-developer-portal-stage-cert
 
   env:
-    INGRESS_URL: "https://developer-portal-stage.hmpps.service.justice.gov.uk"
-    SERVICE_CATALOGUE_URL: "https://service-catalogue-dev.hmpps.service.justice.gov.uk"
+    INGRESS_URL: "https://developer-portal-stage.laa.service.justice.gov.uk"
+    SERVICE_CATALOGUE_URL: "https://service-catalogue-dev.laa.service.justice.gov.uk"
     NODE_ENV: "stage"
     RECOMMENDED_VERSIONS_TTL_MS: "21600000"
-    HMPPS_TEMPLATE_COMPONENT_NAME: "hmpps-template-kotlin"
+    LAA_TEMPLATE_COMPONENT_NAME: "laa-template-kotlin"
     RECOMMENDED_VERSIONS_KOTLIN_ONLY: "true"
 
   namespace_secrets:
@@ -22,5 +22,5 @@ generic-service:
       REDIS_AUTH_TOKEN: "auth_token"
 
 generic-prometheus-alerts:
-  targetApplication: hmpps-developer-portal-stage
-  alertSeverity: hmpps-sre-alerts-nonprod
+  targetApplication: laa-developer-portal-stage
+  alertSeverity: laa-sre-alerts-nonprod

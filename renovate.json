@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>ministryofjustice/hmpps-renovate-config:node"],
+  "extends": ["github>ministryofjustice/laa-renovate-config:node"],
   "prBodyTemplate": "{{{table}}}{{{notes}}}{{{warnings}}}{{{controls}}}",
   "prCreation": "immediate",
   "schedule": ["* * * * 0,6"],
@@ -35,8 +35,8 @@
     },
     {
       "matchManagers": ["helm"],
-      "matchPaths": ["helm_deploy/hmpps-developer-portal/**"],
-      "groupName": "helm hmpps-developer-portal",
+      "matchPaths": ["helm_deploy/laa-developer-portal/**"],
+      "groupName": "helm laa-developer-portal",
       "schedule": ["after 2am and before 6am on Wednesday"],
       "stabilityDays": 0
     }

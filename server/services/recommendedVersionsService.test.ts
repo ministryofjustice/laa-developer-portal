@@ -8,12 +8,12 @@ type strapiComponentMock = {
   versions?: {
     ['Helm Dependencies']?: Record<string, unknown>
     ['Helm']?: { dependencies?: Record<string, unknown> }
-    ['Gradle']?: { hmpps_gradle_spring_boot?: unknown }
+    ['Gradle']?: { laa_gradle_spring_boot?: unknown }
   }
   values?: {
     ['Helm Dependencies']?: Record<string, unknown>
     ['Helm']?: { dependencies?: Record<string, unknown> }
-    ['Gradle']?: { hmpps_gradle_spring_boot?: unknown }
+    ['Gradle']?: { laa_gradle_spring_boot?: unknown }
   }
 }
 
@@ -40,7 +40,7 @@ describe('RecommendedVersionsService (Strapi only)', () => {
           generic_service: { ref: '4.5.6' },
         },
         Gradle: {
-          hmpps_gradle_spring_boot: { ref: '7.8.9' },
+          laa_gradle_spring_boot: { ref: '7.8.9' },
         },
       },
     }
@@ -48,7 +48,7 @@ describe('RecommendedVersionsService (Strapi only)', () => {
     const result = await svc.getRecommendedVersions()
     expect(result.helmDependencies.genericPrometheusAlerts).toBe('1.2.3')
     expect(result.helmDependencies.genericService).toBe('4.5.6')
-    expect(result.gradle.hmppsGradleSpringBoot).toBe('7.8.9')
+    expect(result.gradle.laaGradleSpringBoot).toBe('7.8.9')
     expect(result.metadata.source).toBe('strapi')
   })
 
@@ -62,7 +62,7 @@ describe('RecommendedVersionsService (Strapi only)', () => {
           },
         },
         Gradle: {
-          hmpps_gradle_spring_boot: '8.9.10',
+          laa_gradle_spring_boot: '8.9.10',
         },
       },
     }
@@ -70,7 +70,7 @@ describe('RecommendedVersionsService (Strapi only)', () => {
     const result = await svc.getRecommendedVersions()
     expect(result.helmDependencies.genericPrometheusAlerts).toBe('2.3.4')
     expect(result.helmDependencies.genericService).toBe('5.6.7')
-    expect(result.gradle.hmppsGradleSpringBoot).toBe('8.9.10')
+    expect(result.gradle.laaGradleSpringBoot).toBe('8.9.10')
     expect(['strapi', 'partial']).toContain(result.metadata.source)
   })
 
@@ -80,7 +80,7 @@ describe('RecommendedVersionsService (Strapi only)', () => {
     const result = await svc.getRecommendedVersions()
     expect(result.helmDependencies.genericPrometheusAlerts).toBeUndefined()
     expect(result.helmDependencies.genericService).toBeUndefined()
-    expect(result.gradle.hmppsGradleSpringBoot).toBeUndefined()
+    expect(result.gradle.laaGradleSpringBoot).toBeUndefined()
     expect(result.metadata.source).toBe('none')
   })
 
@@ -92,13 +92,13 @@ describe('RecommendedVersionsService (Strapi only)', () => {
           generic_service: { ref: '9.9.8' },
         },
         Gradle: {
-          hmpps_gradle_spring_boot: { ref: '9.9.7' },
+          laa_gradle_spring_boot: { ref: '9.9.7' },
         },
       },
     }
     const { svc, getComponentMock } = makeSvcWithComponent(component)
     const first = await svc.getRecommendedVersions()
-    expect(first.gradle.hmppsGradleSpringBoot).toBe('9.9.7')
+    expect(first.gradle.laaGradleSpringBoot).toBe('9.9.7')
 
     const second = await svc.getRecommendedVersions()
     expect(second).toEqual(first)

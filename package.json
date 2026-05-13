@@ -1,8 +1,8 @@
 {
-  "name": "hmpps-developer-portal",
+  "name": "laa-developer-portal",
   "version": "0.0.1",
-  "description": "Hmpps Developer Portal",
-  "repository": "git@github.com:ministryofjustice/hmpps-developer-portal.git",
+  "description": "Laa Developer Portal",
+  "repository": "git@github.com:ministryofjustice/laa-developer-portal.git",
   "license": "MIT",
   "scripts": {
     "build": "npm run compile-sass && tsc && npm run copy-views",
@@ -13,10 +13,10 @@
     "int-test": "cypress run --config video=false",
     "lint-fix": "eslint .  --cache --max-warnings 0 --fix",
     "lint": "eslint . --cache --max-warnings 0",
-    "prepare": "hmpps-precommit-hooks-prepare",
+    "prepare": "laa-precommit-hooks-prepare",
     "rebuild": "npm run clean && npm i && npm run build",
     "security_audit": "npx audit-ci --config audit-ci.json",
-    "setup": "npm ci && hmpps-npm-script-run-allowlist",
+    "setup": "npm ci && laa-npm-script-run-allowlist",
     "start-feature:dev": "concurrently -k -p \"[{name}]\" -n \"Views,TypeScript,Node,Sass\" -c \"yellow.bold,cyan.bold,green.bold,blue.bold\" \"npm run watch-views\" \"npm run watch-ts\" \"npm run watch-node-feature\" \"npm run watch-sass\"",
     "start-feature": "export $(cat feature.env) && node $NODE_DEBUG_OPTION dist/server.js | bunyan -o short",
     "start:dev": "concurrently -k -p \"[{name}]\" -n \"Views,TypeScript,Node,Sass\" -c \"yellow.bold,cyan.bold,green.bold,blue.bold\" \"npm run watch-views\" \"npm run watch-ts\" \"npm run watch-node\" \"npm run watch-sass\"",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@ministryofjustice/frontend": "^9.0.0",
-    "@ministryofjustice/hmpps-monitoring": "1.0.2",
+    "@ministryofjustice/laa-monitoring": "1.0.2",
     "agentkeepalive": "^4.6.0",
     "applicationinsights": "^2.9.8",
     "bunyan": "^1.8.15",
@@ -71,9 +71,9 @@
     "url-value-parser": "^2.2.0"
   },
   "devDependencies": {
-    "@ministryofjustice/eslint-config-hmpps": "^1.0.3",
-    "@ministryofjustice/hmpps-npm-script-allowlist": "0.0.4",
-    "@ministryofjustice/hmpps-precommit-hooks": "^2.0.2",
+    "@ministryofjustice/eslint-config-laa": "^1.0.3",
+    "@ministryofjustice/laa-npm-script-allowlist": "0.0.4",
+    "@ministryofjustice/laa-precommit-hooks": "^2.0.2",
     "@tsconfig/node24": "^24.0.4",
     "@types/bunyan": "^1.8.11",
     "@types/bunyan-format": "^0.2.9",

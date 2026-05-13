@@ -1,6 +1,6 @@
 import express, { Router } from 'express'
 
-import { monitoringMiddleware, endpointHealthComponent } from '@ministryofjustice/hmpps-monitoring'
+import { monitoringMiddleware, endpointHealthComponent } from '@ministryofjustice/laa-monitoring'
 import type { ApplicationInfo } from '../applicationInfo'
 import logger from '../../logger'
 import config from '../config'

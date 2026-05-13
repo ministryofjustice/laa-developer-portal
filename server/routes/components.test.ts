@@ -27,7 +27,7 @@ const testComponent: Component = {
   jira_project_keys: ['TEST'],
   github_project_teams_write: ['test-write'],
   github_project_teams_admin: ['test-admin'],
-  github_project_branch_protection_restricted_teams: ['hmpps-prison-visits-booking'],
+  github_project_branch_protection_restricted_teams: ['laa-prison-visits-booking'],
   github_project_visibility: 'public',
   createdAt: '2023-06-07T11:07:00.459Z',
   updatedAt: '2023-10-25T01:25:05.964Z',
@@ -51,11 +51,11 @@ const testComponent: Component = {
       },
     },
     gradle: {
-      hmpps_gradle_spring_boot: '5.7.0',
+      laa_gradle_spring_boot: '5.7.0',
     },
     circleci: {
       orbs: {
-        hmpps: '6',
+        laa: '6',
       },
     },
     dockerfile: {
@@ -184,7 +184,7 @@ beforeEach(() => {
 
   const mockRecommendedVersions: recommendedVersions = {
     helmDependencies: { genericPrometheusAlerts: '1.14', genericService: '3.12' },
-    gradle: { hmppsGradleSpringBoot: '9.1.4' },
+    gradle: { laaGradleSpringBoot: '9.1.4' },
     metadata: { source: 'strapi', fetchedAt: '2025-11-17T10:51:46.910Z' },
   }
 
@@ -205,7 +205,7 @@ describe('/components', () => {
     it('should render components page', () => {
       serviceCatalogueService.getScheduledJob.mockResolvedValue({
         id: 1,
-        name: 'hmpps-github-discovery-incremental',
+        name: 'laa-github-discovery-incremental',
         last_successful_run: '2023-10-01T12:00:00Z',
       })
       return request(app)

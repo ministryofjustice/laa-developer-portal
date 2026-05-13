@@ -31,7 +31,7 @@ export default function routes({
 
   router.get('/', async (req, res) => {
     const scheduledJobRequest = await serviceCatalogueService.getScheduledJob({
-      name: 'hmpps-github-discovery-incremental',
+      name: 'laa-github-discovery-incremental',
     })
     return res.render('pages/components', {
       jobName: scheduledJobRequest.name,

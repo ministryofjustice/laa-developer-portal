@@ -88,7 +88,7 @@ const mockComparison = {
     },
     {
       componentName: 'test-component',
-      key: 'hmppsGradleSpringBoot',
+      key: 'laaGradleSpringBoot',
       current: '9.1.1',
       recommended: '9.1.1',
       status: 'aligned',
@@ -127,7 +127,7 @@ describe('/products', () => {
     it('should render products page', () => {
       serviceCatalogueService.getScheduledJob.mockResolvedValue({
         id: 1,
-        name: 'hmpps-github-discovery-incremental',
+        name: 'laa-github-discovery-incremental',
         last_successful_run: '2023-10-01T12:00:00Z',
       })
       return request(app)

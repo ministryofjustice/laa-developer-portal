@@ -1,3 +1,3 @@
-title = "HMPPS Gitleaks configuration"
+title = "LAA Gitleaks configuration"
 [extend]
-path = "./node_modules/@ministryofjustice/hmpps-precommit-hooks/config.toml"
+path = "./node_modules/@ministryofjustice/laa-precommit-hooks/config.toml"

@@ -18,8 +18,8 @@ const dataFilterService = new DataFilterService(null) as jest.Mocked<DataFilterS
 
 let app: Express
 const testProductList = [
-  { value: 'HMPPS123', text: 'example-product-one [HMPPS123]', selected: false },
-  { value: 'HMPPS456', text: 'example-product-two [HMPPS456]', selected: false },
+  { value: 'LAA123', text: 'example-product-one [LAA123]', selected: false },
+  { value: 'LAA456', text: 'example-product-two [LAA456]', selected: false },
 ]
 
 const testComponentsRequest = [
@@ -44,17 +44,17 @@ const testComponentsRequest = [
 const testComponentRequest = [
   {
     id: 123,
-    github_repo: 'hmpps-visit-allocation-api',
+    github_repo: 'laa-visit-allocation-api',
     repo_description: 'Example service.',
     base_template: '',
     jira_project_keys: ['ABC'],
     github_project_visibility: 'internal' as const,
-    product: 'HMPPS12',
-    github_project_teams_write: ['hmpps-developers'],
-    github_projects_teams_admin: ['hmpps-admijn'],
-    github_project_branch_protection_restricted_teams: ['hmpps-example-team'],
-    prod_alerts_severity_label: 'hmpps-severity-prod',
-    nonprod_alerts_severity_label: 'hmpps-severity-nonprod',
+    product: 'LAA12',
+    github_project_teams_write: ['laa-developers'],
+    github_projects_teams_admin: ['laa-admijn'],
+    github_project_branch_protection_restricted_teams: ['laa-example-team'],
+    prod_alerts_severity_label: 'laa-severity-prod',
+    nonprod_alerts_severity_label: 'laa-severity-nonprod',
     createdAt: '2025-10-14T12:11:12.820Z',
     updatedAt: '2025-10-14T12:24:14.784Z',
     publishedAt: '2025-10-14T12:24:14.793Z',
@@ -109,10 +109,10 @@ describe('/component-requests', () => {
           // Assert product options are rendered
           const options = productSelect.find('option')
           expect(options.length).toBe(2)
-          expect(options.eq(0).attr('value')).toBe('HMPPS123')
-          expect(options.eq(0).text()).toBe('example-product-one [HMPPS123]')
-          expect(options.eq(1).attr('value')).toBe('HMPPS456')
-          expect(options.eq(1).text()).toBe('example-product-two [HMPPS456]')
+          expect(options.eq(0).attr('value')).toBe('LAA123')
+          expect(options.eq(0).text()).toBe('example-product-one [LAA123]')
+          expect(options.eq(1).attr('value')).toBe('LAA456')
+          expect(options.eq(1).text()).toBe('example-product-two [LAA456]')
           // Assert service call was made
           expect(dataFilterService.getFormsDropdownLists).toHaveBeenCalledWith({
             teamName: '',
@@ -151,7 +151,7 @@ describe('/component-requests', () => {
   describe('GET /:repo_name/:requestType', () => {
     it('should render component request details in the table', async () => {
       return request(app)
-        .get('/component-requests/hmpps-visit-allocation-api/Add')
+        .get('/component-requests/laa-visit-allocation-api/Add')
         .expect('Content-Type', /html/)
         .expect(200)
         .expect(res => {
@@ -164,14 +164,14 @@ describe('/component-requests', () => {
           const jiraLink = $('[data-test="jira-project-keys"] a').attr('href')
           expect(jiraLink).toContain('ABC')
           // Product
-          expect($('.componentData td').filter((i, el) => $(el).text().includes('HMPPS12')).length).toBeGreaterThan(0)
+          expect($('.componentData td').filter((i, el) => $(el).text().includes('LAA12')).length).toBeGreaterThan(0)
           // GitHub Write team
           expect(
-            $('.componentData td').filter((i, el) => $(el).text().includes('hmpps-developers')).length,
+            $('.componentData td').filter((i, el) => $(el).text().includes('laa-developers')).length,
           ).toBeGreaterThan(0)
           // GitHub Admin team
           expect(
-            $('.componentData td').filter((i, el) => $(el).text().includes('hmpps-admijn')).length,
+            $('.componentData td').filter((i, el) => $(el).text().includes('laa-admijn')).length,
           ).toBeGreaterThan(0)
           // GitHub Visibility
           expect($('.componentData td').filter((i, el) => $(el).text().includes('internal')).length).toBeGreaterThan(0)
@@ -189,11 +189,11 @@ describe('/component-requests', () => {
           )
           // Production alert severity label
           expect(
-            $('.componentData td').filter((i, el) => $(el).text().includes('hmpps-severity-prod')).length,
+            $('.componentData td').filter((i, el) => $(el).text().includes('laa-severity-prod')).length,
           ).toBeGreaterThan(0)
           // Non-Production alert severity label
           expect(
-            $('.componentData td').filter((i, el) => $(el).text().includes('hmpps-severity-nonprod')).length,
+            $('.componentData td').filter((i, el) => $(el).text().includes('laa-severity-nonprod')).length,
           ).toBeGreaterThan(0)
           // Request Status
           expect($('.componentData td').filter((i, el) => $(el).text().includes('Completed')).length).toBeGreaterThan(0)
@@ -219,17 +219,17 @@ describe('/component-requests', () => {
 
   describe('POST /new', () => {
     const validFormTestData = {
-      github_repo: 'hmpps-example-repo',
+      github_repo: 'laa-example-repo',
       repo_description: 'An example repo',
       base_template: 'node-template',
       jira_project_keys: ['ABC'],
       github_project_visibility: 'internal',
-      product: 'HMPPS12',
-      github_project_teams_write: ['hmpps-devs'],
-      github_projects_teams_admin: ['hmpps-admins'],
+      product: 'LAA12',
+      github_project_teams_write: ['laa-devs'],
+      github_projects_teams_admin: ['laa-admins'],
       github_project_branch_protection_restricted_teams: ['example-team'],
-      prod_alerts_severity_label: 'hmpps-severity-prod',
-      nonprod_alerts_severity_label: 'hmpps-severity-nonprod',
+      prod_alerts_severity_label: 'laa-severity-prod',
+      nonprod_alerts_severity_label: 'laa-severity-nonprod',
       slack_channel_prod_release_notify: 'C1234567890',
       slack_channel_security_scans_notify: 'C0987654321',
       slack_channel_nonprod_release_notify: 'C1122334455',
@@ -248,7 +248,7 @@ describe('/component-requests', () => {
           const $ = cheerio.load(res.text)
           expect($('h1').text()).toContain('Request submitted')
           expect($('.govuk-panel__title').text()).toContain('Request submitted')
-          expect($('.govuk-panel__body').text()).toContain('hmpps-example-repo')
+          expect($('.govuk-panel__body').text()).toContain('laa-example-repo')
         })
     })
   })

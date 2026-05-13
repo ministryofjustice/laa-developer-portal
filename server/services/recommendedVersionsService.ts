@@ -9,7 +9,7 @@ export type recommendedVersions = {
     genericService?: string
   }
   gradle: {
-    hmppsGradleSpringBoot?: string
+    laaGradleSpringBoot?: string
   }
   metadata: {
     source: 'strapi' | 'partial' | 'none'
@@ -19,12 +19,12 @@ export type recommendedVersions = {
 
 /**
  * Reusable service to retrieve current recommended dependency versions
- * from hmpps_template_kotlin.
+ * from laa_template_kotlin.
  *
  * It first attempts to read a single versions file (versions.yaml / versions.yml).
  * If not present, it falls back to:
  *  - helm_deploy/values.yaml for helm dependency versions
- *  - gradle/libs.versions.toml for hmpps_gradle_spring_boot version
+ *  - gradle/libs.versions.toml for laa_gradle_spring_boot version
  *
  * Results are cached in-memory with TTL to avoid excessive network calls.
  */
@@ -51,13 +51,13 @@ export default class RecommendedVersionsService {
       metadata: { source: 'none', fetchedAt: new Date(now).toISOString() },
     }
 
-    // Only Strapi: hmpps-template-kotlin component
+    // Only Strapi: laa-template-kotlin component
     const fromStrapi = await this.fetchRecommendedVersionsFromStrapi()
     logger.info(`[RecommendedVersions] Strapi result: ${JSON.stringify(fromStrapi)}`)
     if (fromStrapi) {
       result.helmDependencies.genericPrometheusAlerts = fromStrapi.helmGenericPrometheusAlerts
       result.helmDependencies.genericService = fromStrapi.helmGenericService
-      result.gradle.hmppsGradleSpringBoot = fromStrapi.hmppsGradleSpringBoot
+      result.gradle.laaGradleSpringBoot = fromStrapi.laaGradleSpringBoot
       result.metadata.source = 'strapi'
     }
 
@@ -65,7 +65,7 @@ export default class RecommendedVersionsService {
     if (
       !result.helmDependencies.genericPrometheusAlerts ||
       !result.helmDependencies.genericService ||
-      !result.gradle.hmppsGradleSpringBoot
+      !result.gradle.laaGradleSpringBoot
     ) {
       result.metadata.source = result.metadata.source === 'none' ? 'none' : 'partial'
     }
@@ -79,7 +79,7 @@ export default class RecommendedVersionsService {
       `[RecommendedVersions] Source=${result.metadata.source}, helm(gpa=${
         result.helmDependencies.genericPrometheusAlerts || 'missing'
       }, gs=${result.helmDependencies.genericService || 'missing'}), gradle(hgsb=${
-        result.gradle.hmppsGradleSpringBoot || 'missing'
+        result.gradle.laaGradleSpringBoot || 'missing'
       })`,
     )
 
@@ -139,7 +139,7 @@ export default class RecommendedVersionsService {
   private async fetchRecommendedVersionsFromStrapi(): Promise<{
     helmGenericPrometheusAlerts?: string
     helmGenericService?: string
-    hmppsGradleSpringBoot?: string
+    laaGradleSpringBoot?: string
   } | null> {
     try {
       const templateComponentName = config.recommendedVersions.componentName
@@ -181,8 +181,8 @@ export default class RecommendedVersionsService {
       if (!helmGenericService) {
         helmGenericService = this.parseVersionValue(helmDeps['generic-service'])
       }
-      let gradleHmppsGradleSpringBoot = this.parseVersionValue(
-        (versions.Gradle as Record<string, unknown>)?.hmpps_gradle_spring_boot,
+      let gradleLaaGradleSpringBoot = this.parseVersionValue(
+        (versions.Gradle as Record<string, unknown>)?.laa_gradle_spring_boot,
       )
 
       // Legacy helm shape in versions
@@ -195,7 +195,7 @@ export default class RecommendedVersionsService {
       }
 
       // Fallback to values container
-      if (!helmGenericPrometheusAlerts || !helmGenericService || !gradleHmppsGradleSpringBoot) {
+      if (!helmGenericPrometheusAlerts || !helmGenericService || !gradleLaaGradleSpringBoot) {
         const vHelmDeps = (values.helm_dependencies as Record<string, unknown>) || {}
         const vGradle = (values.gradle as Record<string, unknown>) || {}
         helmGenericPrometheusAlerts =
@@ -208,8 +208,8 @@ export default class RecommendedVersionsService {
         if (!helmGenericService) {
           helmGenericService = this.parseVersionValue(vHelmDeps['generic-service'])
         }
-        gradleHmppsGradleSpringBoot =
-          gradleHmppsGradleSpringBoot || this.parseVersionValue(vGradle.hmpps_gradle_spring_boot)
+        gradleLaaGradleSpringBoot =
+          gradleLaaGradleSpringBoot || this.parseVersionValue(vGradle.laa_gradle_spring_boot)
       }
 
       // Legacy helm shape in values
@@ -231,14 +231,14 @@ export default class RecommendedVersionsService {
       logger.info(
         `[RecommendedVersions] Strapi extracted helm(gpa=${helmGenericPrometheusAlerts || 'missing'}, gs=${
           helmGenericService || 'missing'
-        }), gradle(hgsb=${gradleHmppsGradleSpringBoot || 'missing'})`,
+        }), gradle(hgsb=${gradleLaaGradleSpringBoot || 'missing'})`,
       )
 
-      if (helmGenericPrometheusAlerts || helmGenericService || gradleHmppsGradleSpringBoot) {
+      if (helmGenericPrometheusAlerts || helmGenericService || gradleLaaGradleSpringBoot) {
         return {
           helmGenericPrometheusAlerts,
           helmGenericService,
-          hmppsGradleSpringBoot: gradleHmppsGradleSpringBoot,
+          laaGradleSpringBoot: gradleLaaGradleSpringBoot,
         }
       }
     } catch (e) {

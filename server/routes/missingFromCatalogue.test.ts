@@ -33,12 +33,12 @@ describe('/missingFromCatalogue', () => {
     {
       product: 'Mock Product 1',
       productSlug: 'mock-product-1',
-      component: 'hmpps-mock-programmes-api',
+      component: 'laa-mock-programmes-api',
     },
     {
       product: 'Mock Product 2',
       productSlug: 'mock-product-2',
-      component: 'hmpps-mock-programmes-api',
+      component: 'laa-mock-programmes-api',
     },
   ]
 
@@ -127,8 +127,8 @@ describe('/missingFromCatalogue', () => {
           const row = componentsMissingTeamsTable.find('tbody .govuk-table__row').eq(0)
           // Select the first cell's link
           const componentLink = row.find('td').eq(0).find('.govuk-table__cell a')
-          expect(componentLink.text().trim()).toBe('hmpps-mock-programmes-api')
-          expect(componentLink.attr('href')).toBe('/components/hmpps-mock-programmes-api')
+          expect(componentLink.text().trim()).toBe('laa-mock-programmes-api')
+          expect(componentLink.attr('href')).toBe('/components/laa-mock-programmes-api')
           // Select the second cell's link
           const productLink = row.find('td').eq(1).find('.govuk-table__cell a')
           expect(productLink.text().trim()).toBe('Mock Product 1')

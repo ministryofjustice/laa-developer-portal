@@ -4,7 +4,7 @@ ARG GIT_REF
 ARG GIT_BRANCH
 
 # Stage: build assets
-FROM ghcr.io/ministryofjustice/hmpps-node:24-alpine AS build
+FROM ghcr.io/ministryofjustice/laa-node:24-alpine AS build
 
 ARG BUILD_NUMBER
 ARG GIT_REF
@@ -25,9 +25,9 @@ RUN npm run build
 RUN npm prune --no-audit --omit=dev
 
 # Stage: copy production assets and dependencies
-FROM ghcr.io/ministryofjustice/hmpps-node:24-alpine-runtime
+FROM ghcr.io/ministryofjustice/laa-node:24-alpine-runtime
 
-LABEL maintainer="HMPPS Digital Studio <info@digital.justice.gov.uk>"
+LABEL maintainer="LAA Digital Studio <info@digital.justice.gov.uk>"
 
 ARG BUILD_NUMBER
 ARG GIT_REF

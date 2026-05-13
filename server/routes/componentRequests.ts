@@ -78,10 +78,10 @@ export default function routes({ componentNameService, serviceCatalogueService, 
             href: '#github_repo',
           })
         }
-        if (!repoName.startsWith('hmpps')) {
+        if (!repoName.startsWith('laa')) {
           validationErrors.push({
             field: 'github_repo',
-            message: 'The repository name must start with "hmpps"',
+            message: 'The repository name must start with "laa"',
             href: '#github_repo',
           })
         }

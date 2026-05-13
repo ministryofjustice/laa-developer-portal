@@ -6,7 +6,7 @@ export default function routes({ serviceCatalogueService }: Services): Router {
   const router = Router()
 
   router.get('/', async (req, res) => {
-    const scheduledJobRequest = await serviceCatalogueService.getScheduledJob({ name: 'hmpps-github-teams-discovery' })
+    const scheduledJobRequest = await serviceCatalogueService.getScheduledJob({ name: 'laa-github-teams-discovery' })
     return res.render('pages/githubTeams', {
       jobName: scheduledJobRequest.name,
       lastSuccessfulRun: utcTimestampToUtcDateTime(scheduledJobRequest.last_successful_run),

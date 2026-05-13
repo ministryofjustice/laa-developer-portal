@@ -14,7 +14,7 @@ jQuery(function () {
       data: 'parent_team_name',
       createdCell: function (td, _cellData, rowData) {
         $(td).html(
-          rowData.parent_team_name === 'hmpps-developers' || rowData.parent_team_name === null
+          rowData.parent_team_name === 'laa-developers' || rowData.parent_team_name === null
             ? `${rowData.parent_team_name}`
             : `<a href="/github-teams/${rowData.parent_team_name}">${rowData.parent_team_name}</a>`,
         )

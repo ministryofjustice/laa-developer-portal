@@ -2219,7 +2219,7 @@ export interface components {
           }
           documentId?: string
           elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-          hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+          laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
           id?: number
           locale?: string
           localizations?: {
@@ -2720,7 +2720,7 @@ export interface components {
             }
             documentId?: string
             elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-            hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+            laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
             id?: number
             locale?: string
             localizations?: {
@@ -3183,7 +3183,7 @@ export interface components {
             }
             documentId?: string
             elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-            hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+            laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
             id?: number
             locale?: string
             localizations?: {
@@ -4024,7 +4024,7 @@ export interface components {
       }
       documentId?: string
       elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-      hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+      laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
       id?: number
       locale?: string
       localizations?: {
@@ -4036,7 +4036,7 @@ export interface components {
         }
         documentId?: string
         elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-        hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+        laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
         id?: number
         locale?: string
         localizations?: {
@@ -4081,7 +4081,7 @@ export interface components {
     NamespaceRequest: {
       data: {
         elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-        hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+        laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
         locale?: string
         localizations?: (number | string)[]
         name: string
@@ -4191,7 +4191,7 @@ export interface components {
               }
               documentId?: string
               elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-              hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+              laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
               id?: number
               locale?: string
               localizations?: {
@@ -4670,7 +4670,7 @@ export interface components {
               }
               documentId?: string
               elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-              hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+              laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
               id?: number
               locale?: string
               localizations?: {
@@ -5460,7 +5460,7 @@ export interface components {
               }
               documentId?: string
               elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-              hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+              laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
               id?: number
               locale?: string
               localizations?: {
@@ -5898,7 +5898,7 @@ export interface components {
               }
               documentId?: string
               elasticache_cluster?: components['schemas']['TfModulesElasticacheClusterComponent'][]
-              hmpps_template?: components['schemas']['TfModulesHmppsTerraformTemplateComponent'][]
+              laa_template?: components['schemas']['TfModulesLaaTerraformTemplateComponent'][]
               id?: number
               locale?: string
               localizations?: {
@@ -6273,7 +6273,7 @@ export interface components {
       tf_mod_version?: string
       tf_path?: string
     }
-    TfModulesHmppsTerraformTemplateComponent: {
+    TfModulesLaaTerraformTemplateComponent: {
       application?: string
       application_insights_instance?: string
       environment_name?: string

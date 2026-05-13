@@ -1,4 +1,4 @@
-import { configureAllowedScripts } from '@ministryofjustice/hmpps-npm-script-allowlist'
+import { configureAllowedScripts } from '@ministryofjustice/laa-npm-script-allowlist'
 
 export default configureAllowedScripts({
   allowlist: {

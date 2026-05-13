@@ -1,4 +1,4 @@
-# Copilot instructions for hmpps-developer-portal
+# Copilot instructions for laa-developer-portal
 
 ## Architecture (read this first)
 - This is a server-rendered Node/TypeScript app: Express + Nunjucks views + page-specific browser JS.

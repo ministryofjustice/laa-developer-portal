@@ -157,8 +157,8 @@ function updateEnvironmentList() {
   const validEnvironments = ['prod', 'preprod', 'test', 'stage', 'dev']
   const selectedEnvironments = []
 
-  let showProbation = $('#hmpps-area-probation').is(':checked')
-  let showPrisons = $('#hmpps-area-prisons').is(':checked')
+  let showProbation = $('#laa-area-probation').is(':checked')
+  let showPrisons = $('#laa-area-prisons').is(':checked')
   let showStatusUp = $('#status-up').is(':checked')
   let showStatusDown = $('#status-down').is(':checked')
   let showStatusMissing = $('#status-missing').is(':checked')

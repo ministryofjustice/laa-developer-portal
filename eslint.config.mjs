@@ -1,6 +1,6 @@
-import hmppsConfig from '@ministryofjustice/eslint-config-hmpps'
+import laaConfig from '@ministryofjustice/eslint-config-laa'
 
-export default hmppsConfig({
+export default laaConfig({
   extraIgnorePaths: ['assets/**/*.js'],
   extraPathsAllowingDevDependencies: ['.allowed-scripts.mjs'],
 })
