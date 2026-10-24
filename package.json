@@ -55,7 +55,7 @@
     "dayjs": "^1.11.20",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
-    "govuk-frontend": "6.1.0",
+    "govuk-frontend": "6.5.1",
     "helmet": "^8.1.0",
     "http-errors": "^2.0.1",
     "jquery": "^4.0.0",
